@@ -3,9 +3,13 @@ package me.guillaume.recruitment.tournament;
 import java.util.ArrayList;
 
 public class Player {
+	protected int initialHp;
 	protected int hp;
 	protected Weapon weapon;
 	protected ArrayList<Equipment> equipment = new ArrayList<Equipment>();
+	
+	// State of the player
+	protected PlayerState stateOfPlayer = new Normal();
 	
 	// Called to engage a death match againt the opponent
 	public void engage(Player p) {
@@ -36,6 +40,10 @@ public class Player {
 		if(damageDone == 0) {
 			return true;
 		}
+		// In the opposite, if the player is attacking, we use the state to change (or not) his damages
+		else {
+			damageDone = this.stateOfPlayer.damage_modifier(damageDone, this);
+		}
 		
 		return p.receive_attack(damageDone, this.weapon);
 	}
@@ -60,7 +68,7 @@ public class Player {
 		}
 	}
 	
-	// Used only for unitary tests
+	// Used only for unitary tests to get the hp
 	public int hitPoints() {
 		return this.hp;
 	}
@@ -80,5 +88,51 @@ public class Player {
 				System.out.println("ERROR, item not found...");
 		}
 		return equipmentFound;
+	}
+	
+	// Find equipment from a String given by the user (called by child class)
+	public Weapon weaponFinder(String weaponName) {
+		Weapon equipmentFound;
+		switch(weaponName) {
+			case "axe":
+				equipmentFound = new HandAxe();
+				break;
+			case "sword":
+				equipmentFound = new HandSword();
+				break;
+			case "gs":
+				equipmentFound = new GreatSword();
+				break;
+			default:
+				equipmentFound = null;
+				System.out.println("ERROR, item not found...");
+		}
+		return equipmentFound;
+	}
+	
+	// Find a state from string
+	public PlayerState stateFinder(String stateName) {
+		PlayerState stateFound;
+		
+		switch(stateName) {
+			case "Vicious":
+				stateFound = new Vicious();
+				break;
+			case "Veteran":
+				stateFound = new Veteran();
+				break;
+			default:
+				stateFound = new Normal();
+		}
+		
+		return stateFound;
+	}
+	
+	// Used by berserk to know if the player is below 30% of his initial hp
+	public boolean isBelow30p() {
+		if(initialHp*0.3 >= this.hp) {
+			return true;
+		}
+		return false;
 	}
 }
