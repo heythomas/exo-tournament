@@ -6,4 +6,9 @@ public class Swordsman extends Player {
 		this.hp = 100;
 		this.weapon = new HandSword();
 	}
+	
+	public Swordsman equip(String equipmentName) {
+		this.equipment = super.equipmentFinder(equipmentName);
+		return this;
+	}
 }
