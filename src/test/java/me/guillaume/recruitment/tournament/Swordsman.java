@@ -8,7 +8,7 @@ public class Swordsman extends Player {
 	}
 	
 	public Swordsman equip(String equipmentName) {
-		this.equipment = super.equipmentFinder(equipmentName);
+		this.equipment.add(super.equipmentFinder(equipmentName));
 		return this;
 	}
 }

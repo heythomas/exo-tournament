@@ -8,7 +8,7 @@ public class Viking extends Player {
 	}
 	
 	public Viking equip(String equipmentName) {
-		this.equipment = super.equipmentFinder(equipmentName);
+		this.equipment.add(super.equipmentFinder(equipmentName));
 		return this;
 	}
 }

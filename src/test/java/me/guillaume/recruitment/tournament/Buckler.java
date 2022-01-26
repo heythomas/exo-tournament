@@ -2,10 +2,11 @@ package me.guillaume.recruitment.tournament;
 
 public class Buckler extends Equipment {
 	
-	public Buckler() {
-		this.hp = 3;
-		this.tandemItem = true;
-	}
+	// Specific parameters used only by buckler are created here
+	private int hp = 3;
+	private boolean tandemItem = true;
+	
+	public Buckler() {}
 	
 	@Override
 	public int hitModifier(int hitIncoming, Weapon opponentWeapon) {
@@ -23,6 +24,11 @@ public class Buckler extends Equipment {
 		}
 		
 		return hitIncoming;
+	}
+
+	@Override
+	public int damageModifier(int initialDamage) {
+		return initialDamage;
 	}
 
 }
