@@ -31,8 +31,6 @@ public class Player {
 				damageDone = el.damageModifier(damageDone);
 			}
 		}
-
-		System.out.println("DEAL -->" + damageDone);
 		
 		// If it appears that the player is not attacking we do not invoke the attack
 		if(damageDone == 0) {
@@ -52,7 +50,6 @@ public class Player {
 		}
 		
 		this.hp -= damage;
-		System.out.println("RECEIVED -->" + damage);
 		
 		if(this.hp <= 0) {
 			this.hp = 0;
