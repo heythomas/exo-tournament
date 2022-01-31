@@ -30,5 +30,10 @@ public class Buckler extends Equipment {
 	public int damageModifier(int initialDamage) {
 		return initialDamage;
 	}
+	
+	public int getHp() {
+		return this.hp;
+	}
+	
 
 }

@@ -17,4 +17,9 @@ public class Armor extends Equipment {
 		initialDamage = initialDamage <= 0 ? 0 : initialDamage;
 		return initialDamage;
 	}
+
+	@Override
+	public int getHp() {
+		return 0;
+	}
 }

@@ -135,4 +135,14 @@ public class Player {
 		}
 		return false;
 	}
+	
+	// Get Hp for tests
+	public int getHp() {
+		return this.hp;
+	}
+	
+	// Get initial Hp for tests
+	public int getInitialHp() {
+		return this.initialHp;
+	}
 }
