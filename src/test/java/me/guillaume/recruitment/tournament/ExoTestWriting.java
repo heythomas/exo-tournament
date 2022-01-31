@@ -51,7 +51,7 @@ public class ExoTestWriting {
 
         assertThat(swordsman.equipment.get(0).getClass()).isEqualTo(Buckler.class);
         assertThat(swordsman.equipment.get(0).getHp()).isEqualTo(2);
-        assertThat(swordsman.getHp()).isEqualTo(swordsman.getInitialHp() - 6);
+        assertThat(swordsman.hitPoints()).isEqualTo(swordsman.getInitialHp() - 6);
 
     }
     
@@ -76,7 +76,7 @@ public class ExoTestWriting {
 
         assertThat(swordsman.equipment.get(0).getClass()).isEqualTo(Buckler.class);
         assertThat(swordsman.equipment.get(0).getHp()).isEqualTo(0);
-        assertThat(swordsman.getHp()).isEqualTo(swordsman.getInitialHp() - 12);
+        assertThat(swordsman.hitPoints()).isEqualTo(swordsman.getInitialHp() - 12);
 
     }
     
